@@ -1,0 +1,26 @@
+{
+  "name": "habit-tracker",
+  "version": "1.0.0",
+  "description": "A simple habit tracking app based on NodeJS + EJS for user habit management on daily and weekly basis.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git"
+  },
+  "keywords": [
+    "Habit-Tracker",
+    "EJS",
+    "NodeJS",
+    "MongoDB"
+  ],
+  "author": "Manideep",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
