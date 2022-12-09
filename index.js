@@ -27,8 +27,8 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 //    Static files   //
-app.use(express.static(path.join(__dirname, './assets')));
 app.use(express.urlencoded());
+app.use(express.static(path.join(__dirname, './assets')));
 
 //  EJS Layout   //
 app.use(expressLayout);
