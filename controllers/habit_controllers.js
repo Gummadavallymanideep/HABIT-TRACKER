@@ -47,13 +47,13 @@ module.exports.delete = function (request, response) {
 // Finds a habit by id given in query params and renders it
 module.exports.viewhabit = function (request, response) {
     let id = request.query.id;
-    Habit.findById(id, function (err, habit) {
+    Habit.findById(id, function (err, habits) {
         if (err) {
             console.log("error in finding habit");
             return;
         }
         else {
-            response.render("habit.ejs", { "habit": habit });
+            response.render("habit.ejs", { "habit": habits });
         }
     })
 }
@@ -61,14 +61,14 @@ module.exports.viewhabit = function (request, response) {
 // Finds a habit by id given in query params and returns it's json object
 module.exports.fetchhabit = function (request, response) {
     let id = request.query.id;
-    Habit.findById(id, function (err, habit) {
+    Habit.findById(id, function (err, habits) {
         if (err) {
             console.log("error in finding habit");
             return;
         }
         else {
             response.setHeader('Content-Type', 'application/json');
-            response.end(JSON.stringify(habit));
+            response.end(JSON.stringify(habits));
         }
     })
 }
@@ -81,7 +81,7 @@ module.exports.updateDates = function (request, response) {
     console.log(date, value, id);
 
     //  Then add/update the date in map then finally update map
-    Habit.findById(id, function (err, habit) {
+    Habit.findById(id, function (err, habits) {
         if (err) {
             console.log("Error in updating habit!!!!");
             return response.end('{ "status":"failed"}');
