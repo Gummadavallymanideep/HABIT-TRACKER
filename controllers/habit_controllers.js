@@ -87,7 +87,7 @@ module.exports.updateDates = function (request, response) {
             return response.end('{ "status":"failed"}');
         }
         else {
-            const r_t = habit.record_tracker;
+            const r_t = habits.record_tracker;
             if (date in r_t) {
                 r_t[date] = value;
             }
