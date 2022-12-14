@@ -1,37 +1,43 @@
-(function(){
+(function () {
 
     const daysList = document.getElementById("item-list");
     const url = new URL(window.location.href);
-    const habitID = url.searchParams.get("id");
+    const habitId = url.searchParams.get("id");
     const startDate = document.getElementById("start-date");
     const endDate = document.getElementById("end-date");
-    const filterBtn = document.getElementById("filter");
+    const filterBtn = document.getElementById("filter")
     let currentDate;
-    let sixtyDatesBefore;
+    let sixtyDaysBefore;
 
     // This function finds the current date 
     // finds a date of sixty days before
     // since the range of date filteration is 60 days
     // adds min and max values to date picker
 
-    function SetMinMaxDateOnDatePicker(){
+    function SetMinMaxDateOnDatePicker() {
         currentDate = moment().format('YYYY-MM-DD');
-        sixtyDatesBefore = moment(currentDate).subtract(60, 'days').format('YYYY-MM-DD');
-        startDate.setAttribute("max", currentDate);
+        sixtyDaysBefore = moment(currentDate).subtract(60, 'days').format('YYYY-MM-DD');
+        // console.log(sixtyDaysBefore);
+        startDate.setAttribute("max", currentDate)
         endDate.setAttribute("max", currentDate);
-        startDate.setAttribute("min", sixtyDatesBefore);
-        endDate.setAttribute("min", sixtyDatesBefore);
+        startDate.setAttribute("min", sixtyDaysBefore)
+        endDate.setAttribute("min", sixtyDaysBefore);
         startDate.value = moment(currentDate).subtract(6, 'days').format('YYYY-MM-DD');
         endDate.value = currentDate;
     }
+
+    // call function to fix min max values
     SetMinMaxDateOnDatePicker();
+
 
     // updates a particular date object which corresponds to task done in that day or not
     const updateThisDateInDb = async function (date, value) {
-        const res = await fetch(`/update-db-date?id=${habitID}&date=${date}&value=${value}`)
+        const res = await fetch(`/update-db-date?id=${habitId}&date=${date}&value=${value}`)
         const data = await res.json();
         // console.log(data);
     }
+
+
 
     //  this function helps in rendering the date list
     // it sets some properties of all the dates so that user can interact properly
@@ -101,7 +107,7 @@
 
     // Helps in fetching user from database so that we have access to date map.
     const fetchFromDB = async function (id) {
-        const res = await fetch("/find-habit?id=<%= id %>");
+        const res = await fetch("/find-habit?id=" + id);
         const data = await res.json();
         return data;
     }
@@ -113,6 +119,7 @@
         // console.log(recordTracker);
         renderDaysList(days, recordTracker, endDate);
     }
+
 
     // helps in filtering by date.
     filterBtn.onclick = function () {
@@ -127,5 +134,7 @@
         renderOnLoad(days, endDateMoment);
     }
 
+
     renderOnLoad(6, currentDate);
+
 })();
