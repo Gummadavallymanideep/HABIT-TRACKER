@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git"
+    "url": "https://github.com/Gummadavallymanideep/habit-tracker.git"
   },
   "keywords": [
     "Habit-Tracker",
@@ -19,6 +19,10 @@
   ],
   "author": "Manideep",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gummadavallymanideep/habit-tracker/issues"
+  },
+  "homepage": "https://github.com/Gummadavallymanideep/habit-tracker#readme",
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.2",
