@@ -1,4 +1,4 @@
-const Habit = require('../models/Habit');
+const Habit = require('../models/habit');
 
 module.exports.load = function (request, response) {
     Habit.find({}, function (err, habits) {
