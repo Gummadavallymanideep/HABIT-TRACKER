@@ -3,7 +3,7 @@ const Habit = require('../models/habit');
 module.exports.load = function (request, response) {
     Habit.find({}, function (err, habits) {
         if (err) {
-            console.log("Error in fetching habits from DB");
+            console.log(err);
             return;
         }
         else {
